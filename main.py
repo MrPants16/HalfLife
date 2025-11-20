@@ -16,7 +16,7 @@ def halfLife(half_life, amount, cycle_length, times_week=1, par=0) -> tuple[list
             life_list[day] += amount
             
     five_cycle: int = int(half_life * 5)
-    print(five_cycle)
+    print(f"{five_cycle} days to run 5 cycles")
     
     return (day_list, life_list)
 
@@ -29,5 +29,5 @@ def plotGraph(day_list, quantity_list) -> None:
     plt.show()
 
 # half life function (half life, amount in mg, cycle length, [optional times a week substance is added (default is 1, cannot be 0)] [optional value of 1 for no extra additions])
-days, doses = halfLife(7, 250, 56, 2, 0)
+days, doses = halfLife(4.5, 250, 84, 2)
 plotGraph(days, doses)
