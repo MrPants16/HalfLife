@@ -1,5 +1,8 @@
 [
     {
         "name": "Testosterone Enanthate", "halflife": 4.5
+    },
+    {
+        "name": "Testosterone Cypionate", "halflife": 8
     }
 ]

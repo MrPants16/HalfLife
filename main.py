@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import json
 
 def halfLife(half_life, amount, cycle_length, times_week=1, par=0) -> tuple[list, list]:
     freq: float = 7 / times_week
@@ -29,7 +30,39 @@ def plotGraph(day_list, quantity_list) -> None:
     plt.show()
 
 # half life function (half life, amount in mg, cycle length, [optional times a week substance is added (default is 1, cannot be 0)] [optional value of 1 for no extra additions])
-uranium: tuple = (1.63274 * (10 ** 12), 1000, (1.63274 * (10 ** 12) * 2))
 item: tuple = (6, 71, 84, 3)
-days, doses = halfLife(item[0], item[1], item[2], item[3] if len(item) > 3 else 1, item[4] if len(item) > 4 else 0)
-plotGraph(days, doses)
+# days, doses = halfLife(item[0], item[1], item[2], item[3] if len(item) > 3 else 1, item[4] if len(item) > 4 else 0)
+# plotGraph(days, doses)
+
+def choiceMade(list: int, choice: int):
+    pass
+
+def userInput():
+    mat_list: list = []
+    print(f"Half life Grapher\nCreator Rylan Rees\n{"=" * 18}")
+    choice: int = int(input("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own\n>"))
+    if choice == 1:
+        with open("presets/substances.json", "r") as file:
+            data = json.load(file)
+        for index, sub in enumerate(data):
+            print(f"[{index + 1}] {sub["name"]}")
+            mat_list.append(sub["name"])
+        choice = int(input(">"))
+        print(mat_list[choice - 1])
+    elif choice == 2:
+        with open("presets/materials.json", "r") as file:
+            data = json.load(file)
+        for index, mat in enumerate(data):
+            print(f"[{index + 1}] {mat["name"]}")
+            mat_list.append(mat["name"])
+        print(data["name"] == mat_list[0])
+    elif choice == 3:
+        with open("presets/custom.json", "r") as file:
+            data = json.load(file)
+        for index, mat in enumerate(data):
+            print(f"[{index + 1}] {mat["name"]}")
+    else:
+        pass
+    # return (halflife, amount, cycle_length, per_week, perm)
+if __name__ == "__main__":
+    material = userInput()
