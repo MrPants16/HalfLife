@@ -4,6 +4,7 @@ This can be used from drugs in your system to finances or anything with decay at
 
 
 TODO:
- - Make preset data pullable instead of entering data
+ - Make preset data pullable instead of entering data read only
  - Make preset data larger
- - Saveable custom material or substance
+ - Savable custom material or substance to custom JSON file writtable
+ - Output and console nice 
