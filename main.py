@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def halfLife(half_life, amount, times_week) -> tuple[list, list]:
     freq: float = 7 / times_week
     cycle_length: int = 28
-    day_list: list = list(range(cycle_length))
+    day_list: list = [i for i in range(cycle_length)]
     dose_days: list = [int(round(freq * i)) for i in range(int(times_week * (cycle_length / 7)))]
     life_list: list = [0.0] * cycle_length
 
