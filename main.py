@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-# formula = quantity_remaining: float = quantity * 0.5 ** (time_elapsed / half_life)
 
 def halfLife(half_life, amount, times_week) -> tuple[list, list]:
     freq: float = 7 / times_week
@@ -8,7 +7,6 @@ def halfLife(half_life, amount, times_week) -> tuple[list, list]:
     dose_days: list = [int(round(freq * i)) for i in range(int(times_week * (cycle_length / 7)))]
     life_list: list = [0.0] * cycle_length
 
-    # loop to iterate day then loop of mg on those days
     for day in range(cycle_length):
         if day > 0:
             life_list[day] = life_list[day -1] * (0.5 ** (1 / half_life))
@@ -24,9 +22,7 @@ def plotGraph(day_list, quantity_list) -> None:
     plt.title("Half life grapher")
     plt.show()
 
-# half life in days, mg of substance, times per week
+# half life function (half life, amount in mg, times a week substance is added)
 days, doses = halfLife(7, 120, 2)
 print(doses)
 plotGraph(days, doses)
-# days, doses = halfLife(0.5, 6.0, 100)
-# plotGraph(days, doses)
