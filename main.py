@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 def halfLife(half_life, amount, cycle_length, times_week=1, par=0) -> tuple[list, list]:
     freq: float = 7 / times_week
-    day_list: list = [i for i in range(cycle_length)]
+    day_list: list = [i for i in range(int(cycle_length))]
     dose_days: list = [int(round(freq * i)) for i in range(int(times_week * (cycle_length / 7)))]
     life_list: list = [0.0] * cycle_length
 
@@ -29,5 +29,7 @@ def plotGraph(day_list, quantity_list) -> None:
     plt.show()
 
 # half life function (half life, amount in mg, cycle length, [optional times a week substance is added (default is 1, cannot be 0)] [optional value of 1 for no extra additions])
-days, doses = halfLife(4.5, 250, 84, 2)
+uranium: tuple = (1.63274 * (10 ** 12), 1000, (1.63274 * (10 ** 12) * 2))
+item: tuple = (6, 71, 84, 3)
+days, doses = halfLife(item[0], item[1], item[2], item[3] if len(item) > 3 else 1, item[4] if len(item) > 4 else 0)
 plotGraph(days, doses)
