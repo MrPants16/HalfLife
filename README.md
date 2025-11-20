@@ -8,3 +8,6 @@ TODO:
  - Make preset data larger
  - Savable custom material or substance to custom JSON file writtable
  - Output and console nice 
+ - Get finance and/or asset sets
+ - Create flowchart
+ - See if you can input data from website
