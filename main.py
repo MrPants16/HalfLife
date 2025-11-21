@@ -38,31 +38,29 @@ def choiceMade(list: int, choice: int):
     pass
 
 def userInput():
-    mat_list: list = []
-    print(f"Half life Grapher\nCreator Rylan Rees\n{"=" * 18}")
-    choice: int = int(input("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own\n>"))
+    print(f"Half life Grapher\nCreator Rylan Rees\n{"=" * 29}")
+    print("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own")
+    choice = 1
+    choice: int = int(input(">"))
+    print(f"{"=" * 29}")
     if choice == 1:
         with open("presets/substances.json", "r") as file:
             data = json.load(file)
-        for index, sub in enumerate(data):
-            print(f"[{index + 1}] {sub["name"]}")
-            mat_list.append(sub["name"])
-        choice = int(input(">"))
-        print(mat_list[choice - 1])
     elif choice == 2:
         with open("presets/materials.json", "r") as file:
             data = json.load(file)
-        for index, mat in enumerate(data):
-            print(f"[{index + 1}] {mat["name"]}")
-            mat_list.append(mat["name"])
-        print(data["name"] == mat_list[0])
     elif choice == 3:
         with open("presets/custom.json", "r") as file:
             data = json.load(file)
-        for index, mat in enumerate(data):
-            print(f"[{index + 1}] {mat["name"]}")
     else:
-        pass
+        with open("presets/custom.json", "r") as file:
+            data = json.load(file)
+    data = list(data)
+    mats =  [mat["name"] for mat in data]
+    half_lifes = [life["halflife"] for life in data]
+    for index, mat in enumerate(mats):
+        print(f"[{index + 1}] {mat}")
+    # choice = int(input(">"))
     # return (halflife, amount, cycle_length, per_week, perm)
 if __name__ == "__main__":
     material = userInput()
