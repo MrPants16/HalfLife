@@ -21,26 +21,9 @@ def halfLife(half_life, amount, cycle_length, times_week=1, par=0) -> tuple[list
     
     return (day_list, life_list)
 
-def plotGraph(day_list, quantity_list) -> None:
-    plt.plot(day_list, quantity_list, color="blue") 
-    plt.ylim(0, max(quantity_list) + max(quantity_list) / 10)
-    plt.xlabel("Time (day)")
-    plt.ylabel("Substance left (mg)")
-    plt.title("Half life grapher")
-    plt.show()
-
-# half life function (half life, amount in mg, cycle length, [optional times a week substance is added (default is 1, cannot be 0)] [optional value of 1 for no extra additions])
-item: tuple = (6, 71, 84, 3)
-# days, doses = halfLife(item[0], item[1], item[2], item[3] if len(item) > 3 else 1, item[4] if len(item) > 4 else 0)
-# plotGraph(days, doses)
-
-def choiceMade(list: int, choice: int):
-    pass
-
-def userInput():
+def userInput() -> tuple:
     print(f"Half life Grapher\nCreator Rylan Rees\n{"=" * 29}")
     print("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own")
-    choice = 1
     choice: int = int(input(">"))
     print(f"{"=" * 29}")
     if choice == 1:
@@ -60,7 +43,24 @@ def userInput():
     half_lifes = [life["halflife"] for life in data]
     for index, mat in enumerate(mats):
         print(f"[{index + 1}] {mat}")
-    # choice = int(input(">"))
-    # return (halflife, amount, cycle_length, per_week, perm)
+    choice = int(input(">")) - 1
+    amount: float = float(input(f"Enter amount in mg\n> "))
+    cycle_length: int = int(input(f"Enter cycle length in whole days\n> "))
+    per_week: int = int(input(f"Doses per week\n> "))
+    # args: int = int(input(f"Arguments\n> "))
+    args = 0
+    return (half_lifes[choice], amount, cycle_length, per_week, args)
+
+def plotGraph(day_list, quantity_list) -> None:
+    plt.plot(day_list, quantity_list, color="blue") 
+    plt.ylim(0, max(quantity_list) + max(quantity_list) / 10)
+    plt.xlabel("Time (day)")
+    plt.ylabel("Substance left (mg)")
+    plt.title("Half life grapher")
+    plt.show()
+
 if __name__ == "__main__":
     material = userInput()
+    # half life function (half life, amount in mg, cycle length, [optional times a week substance is added (default is 1, cannot be 0)] [optional value of 1 for no extra additions])
+    days, doses = halfLife(material[0], material[1], material[2], material[3] if len(material) > 3 else 1, material[4] if len(material) > 4 else 0)
+    plotGraph(days, doses)
