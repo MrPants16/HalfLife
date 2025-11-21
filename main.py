@@ -23,7 +23,7 @@ def halfLife(half_life, amount, cycle_length, times_week=1, par=0) -> tuple[list
 
 def userInput() -> tuple:
     print(f"Half life Grapher\nCreator Rylan Rees\n{"=" * 29}")
-    print("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own")
+    print("For object to test:\n[1] To choose preset drug\n[2] To choose preset material\n[3] Choose your previous save\n[0] To create your own WIP")
     choice: int = int(input(">"))
     print(f"{"=" * 29}")
     if choice == 1:
