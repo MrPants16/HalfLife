@@ -10,3 +10,4 @@ TODO:
  - Output and console nice 
  - Get finance and/or asset sets
  - See if you can input data from website
+ - Make sure the code stays working if entered a int out of list range
