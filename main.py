@@ -42,13 +42,12 @@ def userInput() -> tuple:
     mats =  [mat["name"] for mat in data]
     half_lifes = [life["halflife"] for life in data]
     for index, mat in enumerate(mats):
-        print(f"[{index + 1}] {mat}")
+        print(f"[{index + 1}] {mat}") 
     choice = int(input(">")) - 1
     amount: float = float(input(f"Enter amount in mg\n> "))
     cycle_length: int = int(input(f"Enter cycle length in whole days\n> "))
     per_week: int = int(input(f"Doses per week\n> "))
-    # args: int = int(input(f"Arguments\n> "))
-    args = 0
+    args: int = int(input(f"Arguments\n[0] For repeat inputs\n[1] For no repeat injections\n> "))
     return (half_lifes[choice], amount, cycle_length, per_week, args)
 
 def plotGraph(day_list, quantity_list) -> None:
